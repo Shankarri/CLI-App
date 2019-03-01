@@ -1,5 +1,6 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
+var cTable = require("console.table");
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -18,17 +19,13 @@ connection.connect(function (err) {
 let itemsDisplay = function () {
     connection.query("SELECT * FROM products", function (err, res) {
         if (err) throw err;
-        // console.log(res);
+        var values = [];
         for (var index in res) {
-            console.log("\n Product Id : \t" + res[index].item_id +
-                "\t Price : " + res[index].price +
-                "\t\t Product Name : " + res[index].product_name);
+            values.push([res[index].item_id, res[index].product_name, res[index].price]);
         }
-        console.log("\n");
+        console.table(['Product Id', 'Product Name', 'Price'], values);
         getUserInput(res);
     });
-
-
 }
 
 let getUserInput = function (prodDetails) {
@@ -54,30 +51,37 @@ let getUserInput = function (prodDetails) {
                 console.log("\n Loading ........\n");
                 var foundprod = false;
                 var userProd;
-                var numItems =parseInt(inquirerResponse.numItems);
-                for (var index in prodDetails) {
-                    if (prodDetails[index].item_id == parseInt(inquirerResponse.prodId)) {
-                        foundprod = true;
-                        userProd = prodDetails[index];
-                        break;
+                var numItems = parseInt(inquirerResponse.numItems);
+                var productId = parseInt(inquirerResponse.prodId);
+                if (numItems == inquirerResponse.numItems && productId == inquirerResponse.prodId) {
+                    for (var index in prodDetails) {
+                        if (prodDetails[index].item_id == productId) {
+                            foundprod = true;
+                            userProd = prodDetails[index];
+                            break;
+                        }
                     }
-                }
-                if (foundprod) {
-                    console.log("\n ------ Found your product -------\n");
-                    // console.log("\n \n",  userProd);
-                    if (numItems >= userProd.stock_quantity) {
-                        console.log("\n **  Insufficient quantity!! We don't have " + numItems + " units of the product in stock for this product. ** \n");
-                        connection.end();
+                    if (foundprod) {
+                        console.log("\n ------ Found your product -------\n");
+                        // console.log("\n \n",  userProd);
+                        if (numItems >= userProd.stock_quantity) {
+                            console.log("\n **  Insufficient quantity!! We don't have " + numItems + " units of the product in stock for this product. ** \n");
+                            connection.end();
+                        }
+                        else {
+                            console.log("\n Updating Purchase Order");
+                            var stockLeftAfterOrder = userProd.stock_quantity - numItems;
+                            placeOrder(userProd.item_id, stockLeftAfterOrder);
+                            console.log("\n *** Total Cost of the purchase : \n", numItems * userProd.price);
+                        }
                     }
                     else {
-                        console.log("\n updating database");
-                        var stockLeftAfterOrder = userProd.stock_quantity - numItems;
-                        placeOrder(userProd.item_id, stockLeftAfterOrder);
-                        console.log("\n *** Total Cost of the purchase : \n", numItems * userProd.price);
+                        console.log("\n *** Entered Product id is not present  *** \n");
+                        connection.end();
                     }
                 }
                 else {
-                    console.log("\n *** Entered Product id is not present  *** \n");
+                    console.log("\n *** Please enter correct numbers for Product Id and Stock Quantity \n");
                     connection.end();
                 }
             }
@@ -86,7 +90,7 @@ let getUserInput = function (prodDetails) {
                 connection.end();
             }
         });
-       
+
 }
 
 function placeOrder(prodId, stock_left) {
