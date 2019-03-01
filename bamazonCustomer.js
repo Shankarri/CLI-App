@@ -21,9 +21,10 @@ let itemsDisplay = function () {
         if (err) throw err;
         var values = [];
         for (var index in res) {
-            values.push([res[index].item_id, res[index].product_name, res[index].price]);
+            values.push([' ', res[index].item_id, res[index].product_name, res[index].price]);
         }
-        console.table(['Product Id', 'Product Name', 'Price'], values);
+        console.log("\n ")
+        console.table([' ', 'Product Id', 'Product Name', 'Price'], values);
         getUserInput(res);
     });
 }
@@ -42,7 +43,7 @@ let getUserInput = function (prodDetails) {
         },
         {
             type: "confirm",
-            message: "Are you sure:",
+            message: "Are you sure? ",
             name: "confirm",
             default: true
         }])
@@ -62,17 +63,17 @@ let getUserInput = function (prodDetails) {
                         }
                     }
                     if (foundprod) {
-                        console.log("\n ------ Found your product -------\n");
+                        // console.log("\n ------ Found your product -------\n");
                         // console.log("\n \n",  userProd);
                         if (numItems >= userProd.stock_quantity) {
                             console.log("\n **  Insufficient quantity!! We don't have " + numItems + " units of the product in stock for this product. ** \n");
                             connection.end();
                         }
                         else {
-                            console.log("\n Updating Purchase Order");
+                            console.log("\n Updating your Purchase Order");
                             var stockLeftAfterOrder = userProd.stock_quantity - numItems;
                             placeOrder(userProd.item_id, stockLeftAfterOrder);
-                            console.log("\n *** Total Cost of the purchase : \n", numItems * userProd.price);
+                            console.log("\n *** Total Cost of the purchase : \t", numItems * userProd.price);
                         }
                     }
                     else {
@@ -86,7 +87,7 @@ let getUserInput = function (prodDetails) {
                 }
             }
             else {
-                console.log("\n Come back Soon !! Run the app again if you wish buy products\n");
+                console.log("\n Come back Soon !! Run the app again if you wish to buy products\n");
                 connection.end();
             }
         });

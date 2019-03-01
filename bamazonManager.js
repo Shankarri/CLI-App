@@ -50,7 +50,6 @@ inquirer.prompt([
             case 2: return viewProducts("showlowStock");
             case 3: return viewProducts("addStocktoProduct");
             case 4: return viewProducts("addNewProduct");
-            default: return errorMsg();
         }
     });
 
