@@ -1,4 +1,3 @@
-
 // Initialize all the dependent packages
 var mysql = require("mysql");
 var inquirer = require("inquirer");

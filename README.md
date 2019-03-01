@@ -37,33 +37,32 @@ ________________________________________
 * If you do not want to continue, then press No. This will exit the application.
 
 * Screenshot : 
-![Customer](images/0_customer.PNG)
+    * ![Customer](images/0_customer.PNG)
 
 * If you want to continue, then press Yes or Y. This will  place an order in the bamazon and your Total Cost of the purchase will be displayed in the terminal. 
 
 * Screenshot : 
-![Customer](images/1_customer.PNG)
+    * ![Customer](images/1_customer.PNG)
 
 * If number of units of the selected product is not in stock then it will display Insufficient quantity message.
 
 * Screenshot: 
-![Customer](images/2_customer.PNG)
+    * ![Customer](images/2_customer.PNG)
 
-________________________________________
 
-### Error Scenario's:
+#### Error Scenario's:
 
 
 1. If the user entered Product Id is not present in bamazon, then display error message.
 
 * Screenshot : 
-![Customer](images/1_ErrorMsg_customer.PNG)
+    * ![Customer](images/1_ErrorMsg_customer.PNG)
 
 2. If the user entered Product Id or Number of items are not correct, then display error message.
 
 * Screenshot :
- ![Customer](images/2_ErrorMsg_customer.PNG)
- ![Customer](images/3_ErrorMsg_customer.PNG)
+    * ![Customer](images/2_ErrorMsg_customer.PNG)
+    * ![Customer](images/3_ErrorMsg_customer.PNG)
 
 ________________________________________
 
@@ -79,8 +78,9 @@ ________________________________________
     2. View Low Inventory
     3. Add to Inventory
     4. Add New Product
+________________________________________
 
-#### View Products for Sale & View Low Inventory
+## 1. View Products for Sale & 2. View Low Inventory
 
  
 * Move the arrow keys to select from one of the options. 
@@ -92,35 +92,33 @@ ________________________________________
 * Screenshot for first and second option: 
 ![Customer](images/1_manager.PNG)
 
+________________________________________
 
-#### Add to Inventory
+## 3. Add to Inventory
 
 * If you select third option, then terminal will first display all the prodcusts that are available in the bamazon. Then you will be asked for product Id and number of stocks to add.
 
 * After entring the correct details and If you want to continue, then press Yes or Y. Stock will be added to the entered product ID. 
 
 * Screenshot : 
-![Customer](images/2_manager.PNG)
+    * ![Manager](images/2_manager.PNG)
 
-________________________________________
-
-### Error Scenario's:
-
+##### Error Scenario's:
 
 1. If the user entered Product Id is not present in bamazon, then display error message.
 
 * Screenshot : 
-![Customer](images/1_ErrorMsg_manager.PNG)
+    * ![Manager](images/1_ErrorMsg_manager.PNG)
 
 2. If the user entered Product Id or Number of items are not correct, then display error message.
 
 * Screenshot :
- ![Customer](images/2_ErrorMsg_manager.PNG)
- ![Customer](images/3_ErrorMsg_manager.PNG)
+ *   ![Manager](images/2_ErrorMsg_manager.PNG)
+ *   ![Manager](images/3_ErrorMsg_manager.PNG)
 
 ________________________________________
 
-#### Add New product
+## 4. Add New product
 
 * If you select fourth option, then terminal will first display all the Exsisting prodcusts that are available in the bamazon. 
 
@@ -129,17 +127,18 @@ ________________________________________
 * After entring the correct details and If you want to continue, then press Yes or Y. Stock will be added to the entered product ID. 
 
 * Screenshot : 
-![Customer](images/3_manager.PNG)
+    
+    * ![Manager](images/3_manager.PNG)
 
-________________________________________
 
-### Error Scenario's:
+##### Error Scenario's:
 
 
 1. If the user entered Product Price or Stock are not correct, then display error message.
 
 * Screenshot :
- ![Customer](images/4_ErrorMsg_manager.PNG)
- ![Customer](images/5_ErrorMsg_manager.PNG)
+
+    * ![Manager](images/4_ErrorMsg_manager.PNG)
+    * ![Manager](images/5_ErrorMsg_manager.PNG)
 
 ________________________________________
