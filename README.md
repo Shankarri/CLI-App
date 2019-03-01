@@ -128,7 +128,7 @@ ________________________________________
 
 * Screenshot : 
     
-    * ![Manager](images/3_manager.PNG)
+    * ![Manager](images/3_Manager.png)
 
 
 ##### Error Scenario's:
